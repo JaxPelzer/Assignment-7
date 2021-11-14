@@ -8,7 +8,8 @@ const nodemon = require('nodemon');
 //MongoDB
 const mongoose = require('mongoose');
 const PORT = 1200;
-const dbURL = "mongodb+srv://admin:XZ233LH7RhJJTvB@cluster0.t0xmx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const dbURL1 = "mongodb+srv://admin:XZ233LH7RhJJTvB@cluster0.t0xmx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const dbURL = "mongodb+srv://admin:Password@cluster0.sqrt1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 //Connect to DB
 mongoose.connect(dbURL,
     {
@@ -179,7 +180,7 @@ app.post('/editStudentById', async (req, res) => {
 
 app.post('/editStudentByFname', async (req, res) => {
     try {
-        let student = await Student.find({ fname: req.body.fname })
+        let student = await Student.find({ fname: req.body.queryFname })
 
         if (student) {
             await Student.updateOne({ fname: req.body.queryFname }, {
@@ -227,7 +228,7 @@ app.post('/deleteCourseById', async (req, res) => {
         let result = await Course.findOne({ id: req.body.id })
 
         if (result) {
-            await Course.deleteOne({ courseID: req.body.id });
+            await Course.deleteOne({ id: req.body.id });
             return res.status(200).json("(message: Course deleted)")
         }
         else {
@@ -246,7 +247,7 @@ app.post('/removeStudentFromClasses', async (req, res) => {
         let result = await Course.findOne({ studentID: req.body.studentID })
 
         if (result) {
-            await Course.delete({ courseID: req.body.id });
+            await Course.delete({ studentID: req.body.studentID });
             return res.status(200).json("(message: Students removed from classes)")
         }
         else {
