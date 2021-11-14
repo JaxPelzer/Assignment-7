@@ -57,7 +57,7 @@ app.get('/getAllCourses', async (req, res) => {
         return res.status(200).json(courses);
     }
     catch {
-        return res.status(500);
+        return res.status(500).json("(message: error)");
     }
 });
 
@@ -73,7 +73,7 @@ app.get('/getAllStudents', async (req, res) => {
 
     }
     catch {
-        return res.status(500);
+        return res.status(500).json("(message: error)");
     }
 });
 
@@ -90,7 +90,7 @@ app.get('/findStudent', async (req, res) => {
         return res.status(200).json(student)
     }
     catch {
-        return res.status(500);
+        return res.status(500).json("(message: error)");
     }
 });
 
@@ -110,7 +110,7 @@ app.get('/findCourse', async (req, res) => {
         return res.status(200).json(course);
     }
     catch {
-        return res.status(500);
+        return res.status(500).json("(message: error)");
     }
 });
 
@@ -135,7 +135,7 @@ app.post('/addCourse', async (req, res) => {
         });
     }
     catch {
-        return res.status(500);
+        return res.status(500).json("(message: error)");
     }
 });
 
@@ -153,7 +153,7 @@ app.post('/addStudent', async (req, res) => {
         });
     }
     catch {
-        return res.status(500);
+        return res.status(500).json("(message: error)");
     }
 });
 
@@ -238,7 +238,7 @@ app.post('/deleteCourseById', async (req, res) => {
 
     }
     catch {
-        return res.status(500);
+        return res.status(500).json("(message: error)");
     }
 });
 
@@ -257,7 +257,7 @@ app.post('/removeStudentFromClasses', async (req, res) => {
 
     }
     catch {
-        return res.status(500);
+        return res.status(500).json("(message: error)");
     }
 });
 
